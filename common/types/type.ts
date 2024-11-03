@@ -104,4 +104,3 @@ export type TSystemInformation = {
   releaseInputCode: string;
   systemMaintenance: boolean;
 };
-
