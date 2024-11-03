@@ -1,5 +1,5 @@
 export enum TYPE {
-
+  SENT_OTP = 1,
 }
 
 export enum STATUS {

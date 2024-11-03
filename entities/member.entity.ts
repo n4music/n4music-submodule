@@ -2,9 +2,6 @@ import { Column, Entity, Index, OneToMany } from 'typeorm';
 import Enum from '../common/constants';
 import { CustomBaseEntity } from '../common/entity/custom-base.entity';
 import { DeliveryInfoType, ImagesType } from '../common/types/type';
-import { ActivedWarranty } from './actived-warranty.entity';
-import { Form } from './form.entity';
-import { Voucher } from './voucher.entity';
 
 @Entity({ name: 'members' })
 export class Member extends CustomBaseEntity {
@@ -85,15 +82,6 @@ export class Member extends CustomBaseEntity {
     default: {},
   })
   deliveryInfo: Partial<DeliveryInfoType>;
-
-  @OneToMany(() => Voucher, (voucher) => voucher.member)
-  vouchers: Voucher[];
-
-  @OneToMany(() => ActivedWarranty, (activedWarranty) => activedWarranty.member)
-  activedWarranties: ActivedWarranty[];
-
-  @OneToMany(() => Form, (form) => form.member)
-  forms: Form[];
 
   static createFromDto(createDto: Partial<Member>): Member {
     const user = new Member();

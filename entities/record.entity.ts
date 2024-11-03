@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Song } from './song.entity';
 import { Gense } from './gense.entity';
+import { CustomBaseEntity } from '../common/entity/custom-base.entity';
 
 @Entity('records')
-export class Record {
+export class Record extends CustomBaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -23,12 +24,6 @@ export class Record {
   @ManyToOne(() => Gense)
   @JoinColumn({ name: 'gense_id' })
   gense: Gense;
-
-  @Column('timestamp')
-  created_at: Date;
-
-  @Column('timestamp')
-  updated_at: Date;
 
   @Column('jsonb')
   meta: object;

@@ -1,8 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Artist } from './artist.entity';
+import { CustomBaseEntity } from '../common/entity/custom-base.entity';
 
 @Entity('songs')
-export class Song {
+export class Song extends CustomBaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -24,12 +25,6 @@ export class Song {
 
   @Column('integer')
   status: number;
-
-  @Column('timestamp')
-  created_at: Date;
-
-  @Column('timestamp')
-  updated_at: Date;
 
   @Column('jsonb')
   meta: object;

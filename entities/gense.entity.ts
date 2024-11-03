@@ -1,7 +1,8 @@
+import { CustomBaseEntity } from '../common/entity/custom-base.entity';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('genses')
-export class Gense {
+export class Gense extends CustomBaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -10,12 +11,6 @@ export class Gense {
 
   @Column('varchar')
   description: string;
-
-  @Column('timestamp')
-  created_at: Date;
-
-  @Column('timestamp')
-  updated_at: Date;
 
   @Column('jsonb')
   meta: object;
