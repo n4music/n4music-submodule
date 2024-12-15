@@ -4,9 +4,11 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  ManyToMany,
 } from 'typeorm';
 import { Artist } from './artist.entity';
 import { CustomBaseEntity } from '../common/entity/custom-base.entity';
+import { Playlist } from './playlist.entity';
 
 @Entity('songs')
 export class Song extends CustomBaseEntity {
@@ -34,4 +36,7 @@ export class Song extends CustomBaseEntity {
 
   @Column('jsonb')
   meta: object;
+
+  @ManyToMany(() => Playlist, playlist => playlist.songs)
+  playlists: Playlist[];
 }
